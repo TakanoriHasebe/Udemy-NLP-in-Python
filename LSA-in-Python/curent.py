@@ -11,6 +11,7 @@ current.py
 """
 """""""""""""""""""""""""""""""""
 ###### 行列の作成について確認  ######
+作成してる行列はbag-of-wordsかつ0 or 1
 """""""""""""""""""""""""""""""""
 
 import nltk
@@ -35,6 +36,7 @@ stopwords = stopwords.union({
         'third', 'second', 'fourth',
 })
 
+print(titles[0:2])
 
 def my_tokenizer(s):
     s = s.lower() # downcase
@@ -74,14 +76,21 @@ def tokens_to_vector(tokens):
         x[i] = 1
     return x
 
+
 # 行列の作成
 N = len(all_tokens)
 D = len(word_index_map)
 X = np.zeros((D, N))
+
 i = 0
 for tokens in all_tokens:
     X[:,i] = tokens_to_vector(tokens)
     i += 1
+    
+print(X.shape)
+print(X[:,0])
+print(X[:,1])
+print(X[:,2])
 
 
 """
